@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { useAppDispatch } from "../app/hooks";
 
+import { useAccount, useConnect, useEnsName } from "wagmi";
+import { InjectedConnector } from "wagmi/connectors/injected";
+
 export default function Home() {
+    const { address, isConnected } = useAccount();
+    const { data: ensName } = useEnsName({ address });
+    const { connect } = useConnect({
+        connector: new InjectedConnector(),
+    });
+
     const dispatch = useAppDispatch();
 
     const [erc20, setErc20] = useState({
@@ -52,7 +61,19 @@ export default function Home() {
 
     return (
         <section className="relative bg-white overflow-hidden">
-            <div>dflmdm</div>
+            {isConnected ? (
+                <div>Connected to {ensName ?? address}</div>
+            ) : (
+                <button
+                    className="
+                    inline-block py-2 px-4 text-lg leading-5text-green-50 text-white
+                    bg-green-500 hover:bg-green-600 font-medium focus:ring-2
+                    focus:ring-green-500 focus:ring-opacity-50 rounded-md"
+                    onClick={() => connect()}
+                >
+                    Connect Wallet
+                </button>
+            )}
         </section>
     );
 }

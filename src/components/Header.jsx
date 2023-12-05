@@ -24,8 +24,7 @@ export default function Header({ onDeploy }) {
                                 className="
                                 inline-block py-2 px-4 text-lg leading-5text-green-50 text-white
                                 bg-green-500 hover:bg-green-600 font-medium focus:ring-2
-                                focus:ring-green-500 focus:ring-opacity-50 rounded-md
-                            "
+                                focus:ring-green-500 focus:ring-opacity-50 rounded-md"
                             >
                                 Next
                             </button>
