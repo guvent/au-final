@@ -14,6 +14,7 @@ export default function Header({ onDeploy }) {
                             />
                         </a>
                     </div>
+                    <div className="text-3xl">Code Editor</div>
                     <div className="w-1/2 xl:w-1/3">
                         <div className="flex items-center justify-end">
                             <button
@@ -26,7 +27,7 @@ export default function Header({ onDeploy }) {
                                 focus:ring-green-500 focus:ring-opacity-50 rounded-md
                             "
                             >
-                                Deploy
+                                Next
                             </button>
                         </div>
                     </div>
