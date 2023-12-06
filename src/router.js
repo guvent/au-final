@@ -2,6 +2,7 @@ import Home from './pages/Home';
 import Code from './pages/Code';
 import Deploy from './pages/Deploy';
 import Options from './pages/Options';
+import Review from './pages/Review';
 
 const router = [
     {
@@ -25,6 +26,12 @@ const router = [
     {
         path: "/deploy",
         element: <Deploy />,
+        loader: null,
+        children: []
+    },
+    {
+        path: "/review",
+        element: <Review />,
         loader: null,
         children: []
     }

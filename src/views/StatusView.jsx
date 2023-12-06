@@ -1,35 +1,20 @@
 import React from "react";
 
-export default function OptionView() {
-    const handleOptionClick = () => {
-        console.log("clicked");
-    };
-
+export default function StatusView() {
     return (
         <div className="container px-4 mx-auto">
-            <div className="md:max-w-4xl my-8 mx-auto text-center">
+            <div className="md:max-w-4xl my-28 mx-auto text-center">
                 <h1 className="mb-4 text-3xl md:text-4xl leading-tight font-bold tracking-tighter">
-                    Choose a contract you want to make
+                    Gain more insight into how people use your
                 </h1>
                 <p className="text-lg md:text-xl text-coolGray-500 font-medium">
-                    ERC-20, ERC-721, and ERC-1155 are three prominent Ethereum
-                    token standards, each serving a distinct purpose within the
-                    Ethereum ecosystem.
-                </p>
-                <p className="text-lg py-4 md:text-lg text-coolGray-500 font-medium">
-                    Smart contracts are self-executing contracts with the terms
-                    of the agreement between the buyer and the seller being
-                    directly written into lines of code. There are several types
-                    of smart contracts, each designed to serve specific purposes
-                    within blockchain ecosystems.
+                    With our integrated CRM, project management, collaboration
+                    and invoicing capabilities, you can manage every aspect of
+                    your business in one secure platform.
                 </p>
             </div>
-            <hr className="my-12" />
-            <div className="flex flex-wrap cursor-pointer">
-                <div
-                    onClick={handleOptionClick}
-                    className="w-full md:w-1/2 lg:w-1/3 px-4"
-                >
+            <div className="flex flex-wrap pt-18">
+                <div className="w-full md:w-1/2 lg:w-1/3 px-4">
                     <div className="h-full p-8 text-center hover:bg-white rounded-md hover:shadow-xl transition duration-200">
                         <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-green-500 rounded-lg">
                             <svg
@@ -45,24 +30,15 @@ export default function OptionView() {
                             </svg>
                         </div>
                         <h3 className="mb-4 text-xl md:text-2xl leading-tight font-bold">
-                            ERC-20 Token
+                            Measure your performance
                         </h3>
                         <p className="text-coolGray-500 font-medium">
-                            ERC-20 is a widely adopted standard for fungible
-                            tokens on the Ethereum blockchain. These tokens are
-                            interchangeable with each other and typically
-                            represent assets like cryptocurrencies, loyalty
-                            points, or even company shares. ERC-20 tokens follow
-                            a set of common rules, making them compatible with
-                            various platforms and allowing seamless integration
-                            into decentralized exchanges.
+                            Stay connected with your team and make quick
+                            decisions wherever you are.
                         </p>
                     </div>
                 </div>
-                <div
-                    onClick={handleOptionClick}
-                    className="w-full md:w-1/2 lg:w-1/3 px-4"
-                >
+                <div className="w-full md:w-1/2 lg:w-1/3 px-4">
                     <div className="h-full p-8 text-center hover:bg-white rounded-md hover:shadow-xl transition duration-200">
                         <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-green-500 rounded-lg">
                             <svg
@@ -78,24 +54,16 @@ export default function OptionView() {
                             </svg>
                         </div>
                         <h3 className="mb-4 text-xl md:text-2xl leading-tight font-bold">
-                            ERC-721 Token
+                            Custom analytics
                         </h3>
                         <p className="text-coolGray-500 font-medium">
-                            In contrast to ERC-20, ERC-721 tokens are
-                            non-fungible tokens (NFTs), meaning each token is
-                            unique and indivisible. This standard is often used
-                            to represent ownership or proof of authenticity for
-                            digital or real-world assets such as art,
-                            collectibles, and real estate. ERC-721 uniqueness
-                            makes it suitable for applications where distinct,
-                            one-of-a-kind items are essential.
+                            Get a complete sales dashboard in the cloud. See
+                            activity, revenue and social metrics all in one
+                            place.
                         </p>
                     </div>
                 </div>
-                <div
-                    onClick={handleOptionClick}
-                    className="w-full md:w-1/2 lg:w-1/3 px-4"
-                >
+                <div className="w-full md:w-1/2 lg:w-1/3 px-4">
                     <div className="h-full p-8 text-center hover:bg-white rounded-md hover:shadow-xl transition duration-200">
                         <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-green-500 rounded-lg">
                             <svg
@@ -111,19 +79,11 @@ export default function OptionView() {
                             </svg>
                         </div>
                         <h3 className="mb-4 text-xl md:text-2xl leading-tight font-bold">
-                            ERC-1155 Token
+                            Team Management
                         </h3>
                         <p className="text-coolGray-500 font-medium">
-                            ERC-1155 is a hybrid token standard that combines
-                            features of both ERC-20 and ERC-721. It allows the
-                            creation of both fungible and non-fungible tokens
-                            within the same contract. This versatility is
-                            particularly useful for projects that require a
-                            combination of bulk fungible assets, like in-game
-                            currency, and unique, non-fungible assets, such as
-                            in-game items. ERC-1155 is designed to be more
-                            gas-efficient than deploying separate contracts for
-                            each token type.
+                            Our calendar lets you know what is happening with
+                            customer and projects so you
                         </p>
                     </div>
                 </div>

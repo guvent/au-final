@@ -13,13 +13,20 @@ export default function HomeView({ onConnectWallet }) {
                     <div className="flex flex-wrap xl:items-center -mx-4">
                         <div className="w-full md:w-1/2 px-4 mb-16 md:mb-0">
                             <h1 className="py-8 mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">
-                                A small business is only as good as its tools.
+                                Welcome Smart Contract Creator!
                             </h1>
                             <p className="py-2 mb-8 text-lg md:text-xl text-coolGray-500 font-medium">
-                                We’re different. Flex is the only saas business
-                                platform that lets you run your business on one
-                                platform, seamlessly across all digital
-                                channels.
+                                We can create smart contracts and deploy them to
+                                blockchain networks! Play a crucial role in
+                                shaping the decentralized finance (DeFi)
+                                landscape, enabling various applications, from
+                                creating custom currencies to representing
+                                ownership of digital and physical assets on the
+                                blockchain. They provide a foundation for
+                                developers to create diverse and innovative
+                                decentralized applications (DApps) and you can
+                                leverage blockchain technology for various use
+                                cases.
                             </p>
                             <div className="flex flex-wrap py-6">
                                 <div className="w-full md:w-auto md:mr-4">
