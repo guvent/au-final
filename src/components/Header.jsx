@@ -14,7 +14,7 @@ export default function Header({ onDeploy }) {
                             />
                         </a>
                     </div>
-                    <div className="text-3xl">Code Editor</div>
+                    <div className="text-3xl">Code Review</div>
                     <div className="w-1/2 xl:w-1/3">
                         <div className="flex items-center justify-end">
                             <button
