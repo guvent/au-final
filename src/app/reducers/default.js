@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    list: [],
-    item: null,
+    contract: "",
     options: {}
 };
 
@@ -10,11 +9,8 @@ export const defaultReducer = createSlice({
     name: 'default',
     initialState,
     reducers: {
-        fillList: (state, action) => {
-            state.list = action.payload;
-        },
-        fillItem: (state, action) => {
-            state.item = action.payload;
+        fillContract: (state, action) => {
+            state.contract = action.payload;
         },
         fillOptions: (state, action) => {
             state.options = action.payload;

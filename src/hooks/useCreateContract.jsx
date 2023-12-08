@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { erc20, erc721, erc1155 } from "@openzeppelin/wizard";
 import { useAppSelector } from "../app/hooks";
 
-const useCreateToken = () => {
+const useCreateContract = () => {
     const options = useAppSelector((state) => state.default.options);
 
     const [value, setValue] = useState(null);
@@ -24,4 +24,4 @@ const useCreateToken = () => {
     return [value];
 };
 
-export default useCreateToken;
+export default useCreateContract;

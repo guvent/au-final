@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
-import useCreateToken from "../../hooks/useCreateToken";
+import useCreateContract from "../../hooks/useCreateContract";
 import "./index.css";
 
 import hljs from "highlight.js/lib/core";
 import hljsDefineSolidity from "highlightjs-solidity";
+import { useAppDispatch } from "../../app/hooks";
 hljsDefineSolidity(hljs);
 
 export default function Highlight() {
+    const dispatch = useAppDispatch();
     const [code, setCode] = useState("");
 
-    const [token] = useCreateToken();
+    const [token] = useCreateContract();
 
     useEffect(() => {
+        dispatch({
+            type: "default/fillContract",
+            payload: token,
+        });
         token && setCode(hljs.highlight("solidity", token).value);
     }, [token]);
 
