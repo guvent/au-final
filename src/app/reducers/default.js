@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     list: [],
     item: null,
-    options: null
+    options: {}
 };
 
 export const defaultReducer = createSlice({

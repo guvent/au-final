@@ -1,7 +1,10 @@
 import React from "react";
-import Connect from "../components/Wallet/Connect";
+import Connect from "../../components/Wallet/Connect";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeView({ onConnectWallet }) {
+    const navigator = useNavigate();
+
     const handleConnectWallet = (address) => {
         typeof onConnectWallet === "function" && onConnectWallet(address);
     };
@@ -32,6 +35,7 @@ export default function HomeView({ onConnectWallet }) {
                                 <div className="w-full md:w-auto md:mr-4">
                                     <Connect
                                         onConnected={handleConnectWallet}
+                                        onNextPage={() => navigator("/options")}
                                     />
                                 </div>
                             </div>
