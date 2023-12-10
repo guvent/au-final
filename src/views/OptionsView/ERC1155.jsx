@@ -11,13 +11,14 @@ export default function ERC1155() {
     const options = useAppSelector((state) => state.default.options);
 
     const [erc1155, setErc1155] = useState({
-        type: "erc1155",
+        kind: "ERC1155",
         uri: "",
         mintable: true,
         pausable: true,
         burnable: true,
         supply: false,
         updatableUri: false,
+        upgradeable: false,
     });
 
     const handleContinue = () => {

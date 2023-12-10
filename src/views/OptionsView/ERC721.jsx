@@ -11,7 +11,7 @@ export default function ERC721() {
     const options = useAppSelector((state) => state.default.options);
 
     const [erc721, setErc721] = useState({
-        type: "erc721",
+        kind: "ERC721",
         baseUri: "",
         uriStorage: false,
         enumerable: false,
@@ -20,6 +20,7 @@ export default function ERC721() {
         pausable: true,
         burnable: true,
         votes: false,
+        upgradeable: false,
     });
 
     const handleContinue = () => {

@@ -11,7 +11,7 @@ export default function ERC20() {
     const options = useAppSelector((state) => state.default.options);
 
     const [erc20, setErc20] = useState({
-        type: "erc20",
+        kind: "ERC20",
         mintable: true,
         pausable: true,
         burnable: true,
@@ -19,6 +19,7 @@ export default function ERC20() {
         votes: false,
         flashmint: false,
         premint: "",
+        upgradeable: false,
     });
 
     const handleContinue = () => {

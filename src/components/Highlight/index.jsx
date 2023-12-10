@@ -11,15 +11,26 @@ export default function Highlight() {
     const dispatch = useAppDispatch();
     const [code, setCode] = useState("");
 
-    const [token] = useCreateContract();
+    const [contract, compile] = useCreateContract();
 
     useEffect(() => {
-        dispatch({
-            type: "default/fillContract",
-            payload: token,
-        });
-        token && setCode(hljs.highlight("solidity", token).value);
-    }, [token]);
+        if (contract) {
+            dispatch({
+                type: "default/fillContract",
+                payload: contract,
+            });
+        }
+    }, [contract]);
+
+    useEffect(() => {
+        if (compile) {
+            dispatch({
+                type: "default/fillCompile",
+                payload: compile,
+            });
+            setCode(hljs.highlight("solidity", compile).value);
+        }
+    }, [compile]);
 
     return (
         <div className="output flex flex-col grow overflow-auto h-[calc(100vh-84px)]">
