@@ -5,10 +5,11 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./app";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 import { WagmiConfig, configureChains, createConfig, mainnet } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
+import Motion from "./components/Motion";
 
 const { publicClient, webSocketPublicClient } = configureChains(
   [mainnet],
@@ -21,17 +22,6 @@ const config = createConfig({
   webSocketPublicClient,
 });
 
-const MotionDiv = ({ element }) => (
-  <motion.div
-    initial={{ opacity: 0, marginTop: 0 }}
-    animate={{ opacity: 1, marginTop: 20 }}
-    exit={{ opacity: 0, marginTop: 0 }}
-    transition={{ duration: 0.2 }}
-  >
-    {element}
-  </motion.div>
-);
-
 const AnimatedRouter = () => {
   const location = useLocation();
 
@@ -42,7 +32,7 @@ const AnimatedRouter = () => {
           <Route
             path={v.path}
             loader={v.loader}
-            element={<MotionDiv element={v.element} />}
+            element={<Motion>{v.element}</Motion>}
             key={i}
           />
         ))}

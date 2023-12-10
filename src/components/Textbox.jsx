@@ -12,7 +12,7 @@ export default function Textbox({
     const [originalValue, setOriginalValue] = useState("");
 
     return (
-        <div
+        <span
             className={"inline-flex flex-row align-middle ".concat(
                 small ? "w-4/5" : "w-96",
             )}
@@ -38,6 +38,6 @@ export default function Textbox({
                 )}
                 placeholder={placeholder}
             />
-        </div>
+        </span>
     );
 }

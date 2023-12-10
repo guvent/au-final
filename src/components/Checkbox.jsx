@@ -4,7 +4,7 @@ export default function Checkbox({ id, title, description, value, onChange }) {
     const [originalValue, setOriginalValue] = useState("");
 
     return (
-        <div className="flex flex-row justify-between items-center mb-4 max-w-xs">
+        <span className="flex flex-row justify-between items-center mb-4 max-w-xs">
             <input
                 type="checkbox"
                 id={id}
@@ -21,11 +21,11 @@ export default function Checkbox({ id, title, description, value, onChange }) {
                 className="ms-2 text-sm font-medium text-gray-900 flex align-middle"
                 htmlFor={id}
             >
-                <p className=" pl-4 pt-px">{title}</p>
-                <p className="text-md text-gray-400 pl-4 pt-px">
+                <span className=" pl-4 pt-px">{title}</span>
+                <span className="text-md text-gray-400 pl-4 pt-px">
                     {description && `(${description})`}
-                </p>
+                </span>
             </label>
-        </div>
+        </span>
     );
 }

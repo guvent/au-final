@@ -1,6 +1,7 @@
 import React from "react";
 import Connect from "../../components/Wallet/Connect";
 import { useNavigate } from "react-router-dom";
+import Motion from "../../components/Motion";
 
 export default function HomeView({ onConnectWallet }) {
     const navigator = useNavigate();
@@ -40,7 +41,13 @@ export default function HomeView({ onConnectWallet }) {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full md:w-1/2 px-4">
+                        <Motion
+                            className="w-full md:w-1/2 px-4"
+                            initial={{ opacity: 0, marginBottom: -40 }}
+                            animate={{ opacity: 1, marginBottom: 0 }}
+                            exit={{ opacity: 0, marginBottom: 40 }}
+                            transition={{ duration: 0.5 }}
+                        >
                             <div className="relative mx-auto md:mr-0 max-w-max">
                                 <img
                                     className="absolute z-10 -left-14 -top-12 w-28 md:w-auto"
@@ -58,7 +65,7 @@ export default function HomeView({ onConnectWallet }) {
                                     alt=""
                                 ></img>
                             </div>
-                        </div>
+                        </Motion>
                     </div>
                 </div>
             </div>

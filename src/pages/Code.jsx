@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "../views/CodeView/Header";
 import Highlight from "../components/Highlight";
 import { useNavigate } from "react-router-dom";
 
