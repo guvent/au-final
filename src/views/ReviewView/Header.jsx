@@ -3,7 +3,7 @@ import React from "react";
 export default function Header() {
     return (
         <div className="md:max-w-4xl my-28 mx-auto text-center">
-            <h1 className="mb-4 text-3xl md:text-4xl leading-tight font-bold tracking-tighter">
+            <h1 className="mb-4 text-3xl md:text-4xl leading-tight font-bold tracking-tighter text-green-600">
                 {"You are ready now!"}
             </h1>
             <p className="text-lg md:text-xl text-coolGray-500 font-medium mb-4">

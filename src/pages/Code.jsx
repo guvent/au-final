@@ -7,7 +7,7 @@ export default function Code() {
     const navigator = useNavigate();
 
     const build = () => {
-        navigator("/deploy");
+        navigator("/review");
     };
 
     return (

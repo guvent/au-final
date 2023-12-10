@@ -43,7 +43,7 @@ export default function Remix() {
             onClick={remixHandler}
         >
             <div className="h-full p-8 text-center hover:bg-white rounded-md hover:shadow-xl transition duration-200">
-                <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-green-500 rounded-lg">
+                <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-blue-700 rounded-lg">
                     <svg
                         className="w-6 h-6 text-gray-800 dark:text-white"
                         aria-hidden="true"
@@ -61,11 +61,11 @@ export default function Remix() {
                     </svg>
                 </div>
                 <h3 className="mb-4 text-xl md:text-2xl leading-tight font-bold">
-                    Sent to Remix IDE
+                    Send to Remix IDE
                 </h3>
                 <p className="text-coolGray-500 font-medium">
                     Send for more development on the advanced environment to{" "}
-                    <b>RemixIDE</b>
+                    <b className="text-blue-800">RemixIDE</b>
                 </p>
             </div>
         </div>

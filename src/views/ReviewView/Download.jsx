@@ -19,7 +19,7 @@ export default function Download() {
             onClick={downloadHardhatHandler}
         >
             <div className="h-full p-8 text-center hover:bg-white rounded-md hover:shadow-xl transition duration-200">
-                <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-green-500 rounded-lg">
+                <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-orange-500 rounded-lg">
                     <svg
                         className="w-6 h-6 text-gray-800 dark:text-white"
                         aria-hidden="true"
