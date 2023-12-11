@@ -12,8 +12,9 @@ export default function Checkbox({ id, title, description, value, onChange }) {
                 checked={typeof value !== "undefined" ? value : originalValue}
                 onChange={({ target }) => {
                     setOriginalValue(target.checked);
-                    typeof onChange === "function" &&
-                        onChange(target.checked, target.id);
+                    typeof onChange === "function"
+                        ? onChange(target.checked, target.id)
+                        : () => {};
                 }}
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />

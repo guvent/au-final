@@ -30,8 +30,9 @@ export default function Textbox({
                 value={typeof value === "string" ? value : originalValue}
                 onChange={({ target }) => {
                     setOriginalValue(target.value);
-                    typeof onChange === "function" &&
-                        onChange(target.value, target.id);
+                    typeof onChange === "function"
+                        ? onChange(target.value, target.id)
+                        : () => {};
                 }}
                 className={"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-300 focus:border-blue-300 block ".concat(
                     small ? "p-1 w-full" : "p-2.5 mx-6 w-64",
