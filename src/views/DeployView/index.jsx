@@ -34,7 +34,7 @@ export default function DeployView() {
                 opened={opened}
                 selected={chain?.id}
             />
-            {chain && (
+            {opened && chain && (
                 <Table
                     headers={headers}
                     columns={[
@@ -52,8 +52,12 @@ export default function DeployView() {
                     ]}
                 />
             )}
-            <hr className="mx-auto border border-black w-5/6 my-2" />
-            <Output inputs={chain} />
+            {opened && (
+                <>
+                    <hr className="mx-auto border border-black w-5/6 my-4" />
+                    <Output inputs={chain} />
+                </>
+            )}
         </div>
     );
 }
