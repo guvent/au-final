@@ -7,12 +7,13 @@ import { Provider } from "react-redux";
 import { store } from "./app";
 import { AnimatePresence } from "framer-motion";
 
-import { WagmiConfig, configureChains, createConfig, mainnet } from "wagmi";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 import Motion from "./components/Motion";
+import { avalancheFuji, bscTestnet, goerli, polygonMumbai } from "viem/chains";
 
 const { publicClient, webSocketPublicClient } = configureChains(
-  [mainnet],
+  [goerli, bscTestnet, avalancheFuji, polygonMumbai],
   [publicProvider()],
 );
 
