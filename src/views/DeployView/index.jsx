@@ -55,7 +55,7 @@ export default function DeployView() {
             {opened && (
                 <>
                     <hr className="mx-auto border border-black w-5/6 my-4" />
-                    <Output inputs={chain} />
+                    <Output inputs={JSON.stringify(chain)} />
                 </>
             )}
         </div>
