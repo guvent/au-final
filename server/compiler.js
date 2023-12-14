@@ -12,7 +12,7 @@ function findImports(relativePath) {
 }
 
 const compile = (contractName, content, evmVersion = "istanbul") => {
-    const contractOutput = solc.compile(JSON.stringify({
+    const output = solc.compile(JSON.stringify({
         language: "Solidity",
         sources: {
             [contractName]: {
@@ -32,11 +32,31 @@ const compile = (contractName, content, evmVersion = "istanbul") => {
         import: findImports
     });
 
-    const contractOutputJson = JSON.parse(contractOutput);
+    const details = JSON.parse(output);
 
-    contractOutputJson.errors && contractOutputJson.errors.forEach(console.error);
+    if (details.errors) {
+        details.errors.forEach(console.error);
 
-    return { contractOutput, contractOutputJson };
+        return {
+            abi: null,
+            bytecode: null,
+            opcodes: null,
+            sourceMap: null,
+            error: details.errors.map(e => e.formattedMessage).reduce((a, b) => a + "" + b)
+        };
+    }
+
+    const contract = details.contracts[contractName][contractName.replace(".sol", "")];
+
+    const result = {
+        abi: contract.abi,
+        bytecode: contract.evm.bytecode.object,
+        opcodes: contract.evm.bytecode.opcodes,
+        sourceMap: contract.evm.bytecode.sourceMap,
+        error: null
+    }
+
+    return result;
 }
 
 const content = `

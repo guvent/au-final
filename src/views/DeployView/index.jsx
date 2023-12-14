@@ -4,8 +4,11 @@ import { useNetwork, useSwitchNetwork } from "wagmi";
 import Table from "../../components/Table";
 import Button from "../../components/Button";
 import Output from "./Output";
+import useCompileContract from "../../hooks/useCompileContract";
 
 export default function DeployView() {
+    const [contract, compile] = useCompileContract();
+
     const [opened, setOpened] = useState(false);
 
     const { chain } = useNetwork();
@@ -18,6 +21,7 @@ export default function DeployView() {
     };
 
     const handleDeploy = () => {
+        compile();
         console.log("deployy.....");
     };
 
