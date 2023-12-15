@@ -1,16 +1,13 @@
-import { useEffect } from "react";
-import { useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 
 export default function useCompileContract() {
     const contract = useAppSelector((state) => state.default.compile);
     const options = useAppSelector((state) => state.default.options);
 
-    useEffect(() => {
-        console.log(contract);
-    }, [contract]);
+    const dispatch = useAppDispatch();
 
-    const compile = () => {
-        fetch("http://localhost:3300", {
+    const compile = async () => {
+        const response = await fetch("http://localhost:3300", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -20,7 +17,18 @@ export default function useCompileContract() {
                 options,
             }),
         });
+
+        if (response.ok) {
+            const payload = await response.json();
+            dispatch({
+                type: "default/fillDetails",
+                payload,
+            });
+            return payload;
+        }
+
+        return null;
     };
 
-    return [contract, compile];
+    return [compile];
 }

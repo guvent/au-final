@@ -7,7 +7,7 @@ import Output from "./Output";
 import useCompileContract from "../../hooks/useCompileContract";
 
 export default function DeployView() {
-    const [contract, compile] = useCompileContract();
+    const [compile] = useCompileContract();
 
     const [opened, setOpened] = useState(false);
 
@@ -21,8 +21,9 @@ export default function DeployView() {
     };
 
     const handleDeploy = () => {
-        compile();
-        console.log("deployy.....");
+        compile().then((v) => {
+            console.log(v);
+        });
     };
 
     useEffect(() => {

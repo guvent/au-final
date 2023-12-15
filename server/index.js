@@ -25,6 +25,10 @@ app.post('/', (req, res) => {
 
     const payload = compile(options.name + ".sol", contract);
 
+    if (payload.error) {
+        res.status(500).json(payload);
+    }
+
     res.json(payload);
 });
 
