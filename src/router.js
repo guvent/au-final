@@ -1,8 +1,9 @@
 import Home from './pages/Home';
 import Code from './pages/Code';
 import Build from './pages/Build';
-import Options from './pages/Options';
+import Deploy from './pages/Deploy';
 import Review from './pages/Review';
+import Options from './pages/Options';
 
 const router = [
     {
@@ -24,14 +25,20 @@ const router = [
         children: []
     },
     {
+        path: "/review",
+        element: <Review />,
+        loader: null,
+        children: []
+    },
+    {
         path: "/build",
         element: <Build />,
         loader: null,
         children: []
     },
     {
-        path: "/review",
-        element: <Review />,
+        path: "/deploy",
+        element: <Deploy />,
         loader: null,
         children: []
     }
