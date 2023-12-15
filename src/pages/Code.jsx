@@ -8,7 +8,7 @@ export default function Code() {
     const navigator = useNavigate();
     const account = useAccount();
 
-    const build = () => {
+    const goNext = () => {
         navigator("/review");
     };
 
@@ -20,7 +20,7 @@ export default function Code() {
 
     return (
         <section className="relative bg-white overflow-hidden">
-            <Header onDeploy={build} />
+            <Header onNext={goNext} />
             <Highlight />
         </section>
     );

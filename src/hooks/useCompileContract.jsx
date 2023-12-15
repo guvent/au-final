@@ -30,5 +30,9 @@ export default function useCompileContract() {
         return null;
     };
 
-    return [compile];
+    return {
+        compile,
+        contract,
+        options,
+    };
 }

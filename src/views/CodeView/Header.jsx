@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Header({ onDeploy }) {
+export default function Header({ onNext }) {
     return (
         <div className="bg-tarnsparent">
             <nav className="flex justify-between p-4">
@@ -29,7 +29,7 @@ export default function Header({ onDeploy }) {
                         <div className="flex items-center justify-end">
                             <button
                                 onClick={() =>
-                                    typeof onDeploy === "function" && onDeploy()
+                                    typeof onNext === "function" && onNext()
                                 }
                                 className="
                                 inline-block py-2 px-8 text-lg leading-5text-green-50 text-white

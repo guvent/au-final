@@ -35,7 +35,7 @@ export default function ERC20() {
     };
 
     return (
-        <div onClick={() => console.log()} className="w-full md:w-1/2 lg:w-1/3">
+        <div className="w-full md:w-1/2 lg:w-1/3">
             <div className="h-full p-8 text-center hover:bg-white rounded-md hover:shadow-xl transition duration-200">
                 <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-red-600 rounded-lg">
                     <svg

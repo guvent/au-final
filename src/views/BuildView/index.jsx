@@ -3,11 +3,11 @@ import Header from "./Header";
 import { useNetwork, useSwitchNetwork } from "wagmi";
 import Table from "../../components/Table";
 import Button from "../../components/Button";
-import Output from "./Output";
 import useCompileContract from "../../hooks/useCompileContract";
+import useDownloadFile from "../../hooks/useDownloadFile";
 
-export default function DeployView() {
-    const [compile] = useCompileContract();
+export default function BuildView({ onNext }) {
+    const { compile, options } = useCompileContract();
 
     const [opened, setOpened] = useState(false);
 
@@ -15,33 +15,35 @@ export default function DeployView() {
     const { isLoading, switchNetwork } = useSwitchNetwork();
 
     const [compiled, setCompiled] = useState(null);
-
-    const sendToChain = () => {
-        console.log(chain);
-    };
+    const [download] = useDownloadFile();
 
     const handleClickChain = (ch) => {
         if (ch?.id === chain?.id) return;
         switchNetwork?.(ch?.id);
-        console.log(chain);
     };
 
-    const handleDeploy = () => {
-        if (!compiled) {
-            compile().then((v) => {
-                console.log(v);
-                setCompiled(v);
-            });
-        } else {
-            sendToChain();
-        }
+    const handleCompile = () => {
+        compile().then((v) => {
+            setCompiled(v);
+        });
     };
 
-    const handleDownloadAbi = () => {};
+    const handleDownloadAbi = () => {
+        download(`${options.name}-${options.kind}-abi.json`, compiled.abi);
+    };
 
-    const handleDownloadAll = () => {};
+    const handleDownloadAll = () => {
+        download(`${options.name}-${options.kind}-all.json`, {
+            abi: compiled.abi,
+            opcodes: compiled.opcodes,
+            bytecode: compiled.bytecode,
+            sourceMap: compiled.sourceMap,
+        });
+    };
 
-    const handleDeployChain = () => {};
+    const handleDeployChain = () => {
+        onNext && typeof onNext === "function" && onNext();
+    };
 
     useEffect(() => {
         setOpened(!isLoading);
@@ -66,12 +68,10 @@ export default function DeployView() {
                         chain.nativeCurrency.symbol,
                         <Button
                             key={0}
-                            title={compiled ? "Deploy" : "Compile"}
-                            onClick={handleDeploy}
+                            title={"Compile"}
+                            onClick={handleCompile}
                             className={"mx-4 py-2 px-10 rounded-md hover:shadow-md text-white text-md ".concat(
-                                compiled
-                                    ? "bg-green-700 hover:bg-green-800"
-                                    : "bg-red-700 hover:bg-red-800",
+                                "bg-red-700 hover:bg-red-800",
                             )}
                         />,
                     ]}

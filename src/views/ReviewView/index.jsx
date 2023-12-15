@@ -4,11 +4,11 @@ import Download from "./Download";
 import Remix from "./Remix";
 import { useNavigate } from "react-router-dom";
 
-export default function DeployView() {
+export default function ReviewView() {
     const navigator = useNavigate();
 
-    const handleDeployChain = () => {
-        navigator("/deploy");
+    const handleBuildChain = () => {
+        navigator("/build");
     };
 
     return (
@@ -19,7 +19,7 @@ export default function DeployView() {
                 <Remix />
                 <div
                     className="w-full md:w-1/3 lg:w-1/3 px-4 cursor-pointer"
-                    onClick={handleDeployChain}
+                    onClick={handleBuildChain}
                 >
                     <div className="h-full p-8 text-center hover:bg-white rounded-md hover:shadow-xl transition duration-200">
                         <div className="inline-flex h-16 w-16 mb-6 mx-auto items-center justify-center text-white bg-green-600 rounded-lg">
@@ -35,7 +35,7 @@ export default function DeployView() {
                             </svg>
                         </div>
                         <h3 className="mb-4 text-xl md:text-2xl leading-tight font-bold">
-                            Deploy to Blockchain
+                            Build & Deploy
                         </h3>
                         <p className="text-coolGray-500 font-medium">
                             Get a deployed project in the blockchain. See

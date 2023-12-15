@@ -1,6 +1,6 @@
 import Home from './pages/Home';
 import Code from './pages/Code';
-import Deploy from './pages/Deploy';
+import Build from './pages/Build';
 import Options from './pages/Options';
 import Review from './pages/Review';
 
@@ -24,8 +24,8 @@ const router = [
         children: []
     },
     {
-        path: "/deploy",
-        element: <Deploy />,
+        path: "/build",
+        element: <Build />,
         loader: null,
         children: []
     },
