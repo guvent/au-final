@@ -1,4 +1,5 @@
 const { content, compile } = require("./compiler");
+const { doReady } = require("./do");
 
 const express = require('express');
 const cors = require('cors');
@@ -31,6 +32,8 @@ app.post('/', (req, res) => {
 
     res.json(payload);
 });
+
+doReady();
 
 app.listen(port, host, () => {
     console.log(`Example app listening on '${host}:${port}'`)
