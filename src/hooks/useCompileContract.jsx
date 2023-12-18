@@ -7,7 +7,7 @@ export default function useCompileContract() {
     const dispatch = useAppDispatch();
 
     const compile = async () => {
-        const response = await fetch("http://localhost:3300", {
+        const response = await fetch("https://api.guvent.com/", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
