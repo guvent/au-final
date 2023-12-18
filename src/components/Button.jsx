@@ -5,22 +5,22 @@ export default function Button({ title, onClick, className, disabled }) {
         className ??
         [
             "text-white",
-            "bg-gradient-to-r",
-            "w-40",
+            "text-center",
             "from-green-500",
             "via-green-600",
             "to-green-700",
-            "hover:bg-gradient-to-br",
             "focus:ring-4",
             "focus:outline-none",
             "focus:ring-green-300",
+            "hover:bg-gradient-to-br",
+            "bg-gradient-to-r",
             "font-medium",
             "rounded-lg",
             "px-5",
             "py-2.5",
-            "text-center",
             "me-2",
             "mb-2",
+            "w-40",
         ].join(" ");
 
     if (disabled) {

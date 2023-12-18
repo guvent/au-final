@@ -5,11 +5,13 @@ import Table from "../../components/Table";
 import Button from "../../components/Button";
 import useCompileContract from "../../hooks/useCompileContract";
 import useDownloadFile from "../../hooks/useDownloadFile";
+import Loading from "../../components/Loading";
 
 export default function BuildView({ onNext }) {
     const { compile, options, contract } = useCompileContract();
 
     const [opened, setOpened] = useState(false);
+    const [isLoader, setIsLoader] = useState(false);
 
     const { chain } = useNetwork();
     const { isLoading, switchNetwork } = useSwitchNetwork();
@@ -23,8 +25,14 @@ export default function BuildView({ onNext }) {
     };
 
     const handleCompile = () => {
+        setIsLoader(true);
+
         compile().then((v) => {
             setCompiled(v);
+
+            setTimeout(() => {
+                setIsLoader(false);
+            }, 1000);
         });
     };
 
@@ -59,29 +67,33 @@ export default function BuildView({ onNext }) {
 
     return (
         <div>
+            <Loading show={isLoader} />
             <Header
                 onClick={handleClickChain}
                 opened={opened}
                 selected={chain?.id}
             />
-            {opened && chain && (
-                <Table
-                    headers={headers}
-                    columns={[
-                        chain.name,
-                        chain.nativeCurrency.name,
-                        chain.nativeCurrency.symbol,
-                        <Button
-                            key={0}
-                            title={"Compile"}
-                            onClick={handleCompile}
-                            className={"mx-4 py-2 px-10 rounded-md hover:shadow-md text-white text-md ".concat(
-                                "bg-red-700 hover:bg-red-800",
-                            )}
-                        />,
-                    ]}
-                />
-            )}
+
+            <div className="mx-4 py-2 px-10 flex flex-col">
+                {opened && chain && (
+                    <Table
+                        headers={headers}
+                        columns={[
+                            chain.name,
+                            chain.nativeCurrency.name,
+                            chain.nativeCurrency.symbol,
+                            <Button
+                                key={0}
+                                title={"Compile"}
+                                onClick={handleCompile}
+                                className={"mx-4 py-2 px-10 rounded-md hover:shadow-md text-white text-md ".concat(
+                                    "bg-red-700 hover:bg-red-800",
+                                )}
+                            />,
+                        ]}
+                    />
+                )}
+            </div>
 
             <hr className="mx-auto border border-gray-400 w-5/6 my-4" />
             <div className="mx-14 py-2 px-10 flex flex-col">

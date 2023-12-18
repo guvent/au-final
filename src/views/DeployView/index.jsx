@@ -10,7 +10,7 @@ export default function DeployView({ onNext }) {
 
     const [results, setResults] = useState({
         address: "...",
-        txId: "..",
+        txId: "...",
         link: "...",
     });
 
@@ -43,7 +43,7 @@ export default function DeployView({ onNext }) {
 
             <hr className="mx-auto border border-gray-400 w-5/6 my-10" />
 
-            {steps}
+            <div className="flex flex-col mx-auto">{steps}</div>
 
             <hr className="mx-auto border border-gray-400 w-5/6 my-10" />
 
