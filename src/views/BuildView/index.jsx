@@ -7,7 +7,7 @@ import useCompileContract from "../../hooks/useCompileContract";
 import useDownloadFile from "../../hooks/useDownloadFile";
 
 export default function BuildView({ onNext }) {
-    const { compile, options } = useCompileContract();
+    const { compile, options, contract } = useCompileContract();
 
     const [opened, setOpened] = useState(false);
 
@@ -32,12 +32,17 @@ export default function BuildView({ onNext }) {
         download(`${options.name}-${options.kind}-abi.json`, compiled.abi);
     };
 
+    const handleDownloadContract = () => {
+        download(`${options.name}-${options.kind}.sol`, contract);
+    };
+
     const handleDownloadAll = () => {
         download(`${options.name}-${options.kind}-all.json`, {
             abi: compiled.abi,
             opcodes: compiled.opcodes,
             bytecode: compiled.bytecode,
             sourceMap: compiled.sourceMap,
+            contract,
         });
     };
 
@@ -87,6 +92,14 @@ export default function BuildView({ onNext }) {
                     <Button
                         title={"Download ABI"}
                         onClick={handleDownloadAbi}
+                        disabled={!compiled}
+                        className={
+                            "mx-4 my-1 py-2 px-10 rounded-md bg-blue-700 hover:bg-blue-800 hover:shadow-md text-white text-md"
+                        }
+                    />
+                    <Button
+                        title={"Download Contract"}
+                        onClick={handleDownloadContract}
                         disabled={!compiled}
                         className={
                             "mx-4 my-1 py-2 px-10 rounded-md bg-blue-700 hover:bg-blue-800 hover:shadow-md text-white text-md"
