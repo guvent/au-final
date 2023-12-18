@@ -1,9 +1,9 @@
-const { content, compile } = require("./compiler");
+const { compile } = require("./compiler");
+const { doReady } = require("./do");
 
 const express = require('express');
 const cors = require('cors');
 
-const host = "localhost";
 const port = 3300;
 
 const app = express();
@@ -11,10 +11,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    const result = compile("ExampleToken.sol", content);
-
-    res.json(result);
+app.get('/', (_, res) => {
+    res.status(200).json({
+        message: "success"
+    });
 });
 
 app.post('/', (req, res) => {
@@ -32,6 +32,8 @@ app.post('/', (req, res) => {
     res.json(payload);
 });
 
-app.listen(port, host, () => {
-    console.log(`Example app listening on '${host}:${port}'`)
+doReady();
+
+app.listen(port, () => {
+    console.log(`app listening on port ${port}!'`)
 })
