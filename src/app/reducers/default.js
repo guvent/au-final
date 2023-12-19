@@ -5,6 +5,7 @@ const initialState = {
     contract: {},
     options: {},
     details: {},
+    walletClient: null
 };
 
 export const defaultReducer = createSlice({
@@ -22,6 +23,9 @@ export const defaultReducer = createSlice({
         },
         fillDetails: (state, action) => {
             state.details = action.payload;
+        },
+        setWalletClient: (state, action) => {
+            state.walletClient = action.payload
         }
     }
 });

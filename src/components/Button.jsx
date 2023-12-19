@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Button({ title, onClick, className, disabled }) {
+export default function Button({ title, onClick, className, disabled, wide }) {
     let classes =
         className ??
         [
@@ -28,6 +28,8 @@ export default function Button({ title, onClick, className, disabled }) {
             " !bg-gray-400 !from-gray-400 !via-gray-400 !to-gray-400 !cursor-not-allowed",
         );
     }
+
+    if (wide) classes = classes.concat(" !w-full");
 
     return (
         <>

@@ -2,19 +2,32 @@ import React, { useEffect } from "react";
 
 import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
+import { useAppDispatch } from "../../app/hooks";
 
 export default function Connect({ onConnected, onNextPage }) {
-    const { address, isConnected } = useAccount();
     const { data: ensName } = useEnsName({ address });
-    const { connect } = useConnect({
+    const { address, isConnected } = useAccount();
+
+    const { disconnect } = useDisconnect();
+    const { connect, connectors } = useConnect({
         connector: new InjectedConnector(),
     });
-    const { disconnect } = useDisconnect();
+
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        isConnected &&
-            typeof onConnected === "function" &&
-            onConnected(ensName ?? address);
+        if (!isConnected) return;
+
+        typeof onConnected === "function" && onConnected(ensName ?? address);
+
+        connectors[0].getWalletClient().then((client) => {
+            globalThis.walletClient = client;
+
+            dispatch({
+                type: "default/setWalletClient",
+                payload: client,
+            });
+        });
     }, [isConnected]);
 
     return isConnected ? (
