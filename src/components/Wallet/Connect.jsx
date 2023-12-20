@@ -5,8 +5,8 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 import { useAppDispatch } from "../../app/hooks";
 
 export default function Connect({ onConnected, onNextPage }) {
-    const { data: ensName } = useEnsName({ address });
     const { address, isConnected } = useAccount();
+    const { data: ensName } = useEnsName({ address });
 
     const { disconnect } = useDisconnect();
     const { connect, connectors } = useConnect({

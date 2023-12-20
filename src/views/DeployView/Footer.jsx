@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNetwork } from "wagmi";
 
-export default function Footer({ address, txId, link, show }) {
+export default function Footer({ info }) {
+    const { chain } = useNetwork();
+
+    const [link, setLink] = useState(undefined);
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        if (info.status === "success") {
+            setShow(true);
+
+            if (typeof chain === "object") {
+                if (chain.blockExplorers.default) {
+                    if (typeof info.txHash === "string") {
+                        const url = chain.blockExplorers.default.url;
+
+                        setLink({
+                            text: url,
+                            href: url.concat("/tx/").concat(info.txHash),
+                        });
+                    }
+                }
+            }
+        }
+    }, [info, chain]);
+
     return (
         <div
             className={"md:max-w-4xl mx-auto text-center transition-all duration-300 mt-10 ".concat(
-                show ?? " opacity-0",
+                show === false && " opacity-50",
             )}
         >
             <table className="table mx-16 text-left">
@@ -14,7 +39,7 @@ export default function Footer({ address, txId, link, show }) {
                             Contract Address:
                         </td>
                         <td className="border-b-2 border-l-2 pl-4 py-2 text-md w-full">
-                            {address ?? "..."}
+                            {info.address ?? "..."}
                         </td>
                     </tr>
                     <tr>
@@ -22,7 +47,7 @@ export default function Footer({ address, txId, link, show }) {
                             Transaction ID:
                         </td>
                         <td className="border-b-2 border-l-2 pl-4 py-2 text-md w-full">
-                            {txId ?? "..."}
+                            {info.txHash ?? "..."}
                         </td>
                     </tr>
                     <tr>
@@ -30,7 +55,17 @@ export default function Footer({ address, txId, link, show }) {
                             Explorer Link:
                         </td>
                         <td className="border-b-2 border-l-2 pl-4 py-2 text-md w-full">
-                            {link ?? "..."}
+                            {link ? (
+                                <a
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {link.text}
+                                </a>
+                            ) : (
+                                "..."
+                            )}
                         </td>
                     </tr>
                 </tbody>

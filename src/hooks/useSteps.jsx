@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Step from "../components/Step";
 
-function Steps({ steps }) {
+export function Steps({ steps }) {
     return (
         <>
             {steps.map !== undefined &&
@@ -16,7 +16,8 @@ function Steps({ steps }) {
 
 export default function useSteps(items) {
     const [steps, setSteps] = useState([]);
-    const [step, setStep] = useState(-1);
+    // const [step, setStep] = useState(-1);
+    const [stack, setStack] = useState([]);
 
     useEffect(() => {
         steps.length !== items.length &&
@@ -29,10 +30,16 @@ export default function useSteps(items) {
             );
     }, [items]);
 
-    const next = (state) => {
-        if (steps.length <= step) return;
+    useEffect(() => {
+        if (stack.length <= 0) return;
+        if (steps.length < stack.length - 1) return;
 
         setSteps((sp) => {
+            const step = stack.length - 2;
+            const state = stack[step];
+
+            console.log(stack, step);
+
             return sp.map((sv, si) => {
                 let status = sv.status;
 
@@ -46,11 +53,14 @@ export default function useSteps(items) {
                 };
             });
         });
+    }, [stack]);
 
-        setStep((s) => s + 1);
+    const next = useCallback(
+        (state) => {
+            setStack((s) => [...s, state]);
+        },
+        [stack],
+    );
 
-        return step;
-    };
-
-    return [<Steps key={0} steps={steps} />, next];
+    return [steps, next];
 }
