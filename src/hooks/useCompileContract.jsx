@@ -7,7 +7,7 @@ export default function useCompileContract() {
     const dispatch = useAppDispatch();
 
     const compile = async () => {
-        const response = await fetch("https://api.guvent.com/", {
+        const response = await fetch(process.env.REACT_APP_SERVER_URL, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
