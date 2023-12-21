@@ -16,11 +16,7 @@ Access live demo link: [https://au.guvent.com](https://au.guvent.com)
 
 API access url: [https://api.guvent.com](https://api.guvent.com)
 
-<div>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NvHxnChKEw4?si=LI139FogqspAadSh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-</div>
+[![](https://img.youtube.com/vi/NvHxnChKEw4/maxresdefault.jpg)](https://www.youtube.com/watch?v=NvHxnChKEw4)
 
 ## Available Scripts
 
