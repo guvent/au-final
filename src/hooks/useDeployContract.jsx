@@ -8,6 +8,7 @@ import { useState } from "react";
 export default function useDeployContract() {
     const { chain } = useNetwork();
 
+    const [complete, setComplete] = useState(false);
     const [info, setInfo] = useState({
         block: "...",
         number: "...",
@@ -47,12 +48,14 @@ export default function useDeployContract() {
         return await createPublicClient({
             chain,
             transport: http(),
-        }).getTransactionReceipt({
+        }).waitForTransactionReceipt({
             hash,
         });
     };
 
     const start = async () => {
+        setComplete(false);
+
         next("success");
 
         setInfo((s) => ({
@@ -87,16 +90,17 @@ export default function useDeployContract() {
 
                     if (typeof response === "object") {
                         setInfo({
-                            block: response.blockHash,
-                            number: response.blockNumber,
-                            address: response.contractAddress,
-                            txHash: response.transactionHash,
-                            txIndex: response.transactionIndex,
-                            gasUsed: response.gasUsed,
+                            block: response.blockHash.toString(),
+                            number: response.blockNumber.toString(),
+                            address: response.contractAddress.toString(),
+                            txHash: response.transactionHash.toString(),
+                            txIndex: response.transactionIndex.toString(),
+                            gasUsed: response.gasUsed.toString(),
                             status: response.status,
                         });
 
                         next("success");
+                        setComplete(true);
                         clearInterval(txTimer);
                         return;
                     }
@@ -105,5 +109,5 @@ export default function useDeployContract() {
         }, 2000);
     };
 
-    return [steps, start, info];
+    return [steps, start, info, complete];
 }

@@ -1,5 +1,17 @@
 import React from "react";
 
+const Ready = () => (
+    <svg
+        className="w-6 h-8 text-gray-800"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 16 3"
+    >
+        <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+    </svg>
+);
+
 const Pending = () => (
     <svg
         className="w-6 h-8 text-blue-700"
@@ -79,6 +91,8 @@ export default function Spinner({ className, status }) {
         <div role="status" className="flex w-fit">
             {((status) => {
                 switch (status?.toLowerCase()) {
+                    case "ready":
+                        return <Ready />;
                     case "pending":
                         return <Pending />;
                     case "success":

@@ -8,7 +8,9 @@ export default function Deploy() {
     const account = useAccount();
 
     const goNext = () => {
-        navigator("/");
+        setTimeout(() => {
+            navigator("/");
+        }, 1000 * 60);
     };
 
     useEffect(() => {
