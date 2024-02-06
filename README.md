@@ -72,7 +72,7 @@ services:
   github:
     branch: master
     deploy_on_push: true
-    repo: guvent/au-final
+    repo: guvent/smart-contract-creator
   health_check:
     port: 3300
   http_port: 3300
